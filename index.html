@@ -13,7 +13,7 @@
 
 </head>
 <body>
-  <video autoplay muted loop id="video" src=""></video>  
+  <video height="100%" autoplay muted loop id="video" src=""></video>  
   <div class="container-fluid">
     <div class="top-container">
       <div class="text-container">
@@ -77,14 +77,12 @@ var chinese = document.getElementById('chinese-label')
 var hero = document.getElementById('guitar-hero-label')
 
 dev.addEventListener('mouseover', function(event) {
-  video.style.top = '-10px'
   video.src="assets/video/webdev.mp4"
   video.style.opacity = 1.0
 });
 
 dev.addEventListener('mouseleave', function(event){
   video.style.opacity = 0
-  video.style.top = '-115px'
 });
 
 
@@ -221,7 +219,7 @@ hr{
 
 video{
   position: fixed;
-  top: -115px;
+  top: 0;
   left: 0px;
   margin: auto;
   min-width: 100%;
