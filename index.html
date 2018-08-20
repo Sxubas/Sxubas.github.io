@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Julián Manrique</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+</head>
+<body>
+  <video autoplay muted loop id="video" src=""></video>  
+  <div class="container-fluid">
+    <div class="top-container">
+      <div class="text-container">
+        <h1 class="title">
+            Julián Manrique
+          </h1>
+      
+          <p class="title-label">
+            Dev, gamer and language learner
+          </p>
+      </div>
+      <div class="buttons-container">
+        <a href="mailto:ja.manrique@uniandes.edu.co" target="_blank"><i class="fas fa-envelope-square"></i></a>
+        <a href="https://twitter.com/JaManrique0" target="_blank"> <i class="fab fa-twitter-square"></i></a>
+        <a href="https://github.com/Sxubas" target="_blank"><i class="fab fa-github-square"></i></a>
+        <a href="https://steamcommunity.com/profiles/76561198093264665" target="_blank"><i class="fab fa-steam-square"></i></a>
+      </div>
+    </div>    
+
+    <hr>
+
+    <h2 class="list-title">
+      Things I love to be:
+    </h2>
+    <span class="not-emphasized">hover the mouse over each item to get a video preview</span>
+
+    <div class="list">
+      <div class="list-item" id="dev-label">
+        <i class="material-icons">code</i>
+        <div class="item-text">
+          Passionate developer
+        </div>        
+      </div>
+      <div class="list-item" id="fps-label">
+        <i class="material-icons">games</i>
+        <div class="item-text">Competitive FPS gamer</div>
+        
+      </div>
+      <div class="list-item" id="chinese-label">
+        <i class="material-icons">translate</i>
+        <div class="item-text">Mandarin learner</div>
+      </div>
+      <div class="list-item" id="guitar-hero-label">
+        <i class="material-icons">videogame_asset</i>
+        <div class="item-text">Guitar hero player <strong>with controller</strong></div>
+        
+      </div>
+    </div>
+
+  </div>
+</body>
+
+<script>
+
+var video = document.getElementById('video')
+video.style.opacity = 0
+
+var dev = document.getElementById('dev-label')
+var fps = document.getElementById('fps-label')
+var chinese = document.getElementById('chinese-label')
+var hero = document.getElementById('guitar-hero-label')
+
+dev.addEventListener('mouseover', function(event) {
+  video.style.top = '-10px'
+  video.src="assets/video/webdev.mp4"
+  video.style.opacity = 1.0
+});
+
+dev.addEventListener('mouseleave', function(event){
+  video.style.opacity = 0
+  video.style.top = '-115px'
+});
+
+
+fps.addEventListener('mouseover', function(event) {
+  video.src = "assets/video/paladins.mp4"
+  video.style.opacity = 1.0
+});
+
+fps.addEventListener('mouseleave', function(event){
+  video.style.opacity = 0
+});
+
+chinese.addEventListener('mouseover', function(event) {
+  video.src = "---"
+  video.style.opacity = 1.0
+});
+
+chinese.addEventListener('mouseleave', function(event){
+  video.style.opacity = 0
+});
+
+hero.addEventListener('mouseover', function(event) {
+  video.src = "assets/video/clonehero.mp4"
+  video.style.opacity = 1.0
+});
+
+hero.addEventListener('mouseleave', function(event){
+  video.style.opacity = 0
+});
+
+</script>
+
+<style>
+ 
+html{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  height: 100%;
+  width: 100%;
+}
+
+body{
+  transition: all 0.6s ease-in-out;
+  height: 100%;
+  widows: 100%;
+  padding: 20vh 10vw;
+  background: linear-gradient(30deg, rgb(51, 51, 51), rgb(27, 27, 27)) no-repeat;
+  color: whitesmoke;
+}
+
+.top-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttons-container{
+  margin-right: 16px;
+}
+
+.buttons-container i{
+  margin: 0px 8px;
+  font-size: 2.8rem;
+  cursor: pointer;
+}
+
+.buttons-container a:link{
+  color: whitesmoke
+}
+
+.buttons-container a:hover{
+  color: rgb(182, 255, 231);
+}
+
+.buttons-container a:visited{
+  color: rgb(150, 214, 193);
+}
+
+.title{
+  font-size: 5rem;
+  color: rgb(131, 255, 214);
+  margin: -8px 0px;
+}
+
+.title-label{
+  font-size: 1.5rem;
+  font-weight: lighter;
+  margin: 0;
+}
+
+hr{
+  border-color: rgb(131, 255, 214);
+  margin: 8px 0;
+}
+
+.list-title{
+  margin: -4px 0;
+}
+
+.not-emphasized{
+  font-size: 1rem;
+  color: rgb(180, 180, 180);
+}
+
+.list{
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+  font-size: 1.4rem;
+}
+
+.list-item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 1rem 0;
+  transition: all 0.3s linear;
+  width: -moz-fit-content;
+  padding: 2px;
+}
+
+.list-item:hover{
+  text-shadow: 0px 0px 8px whitesmoke;
+}
+
+.item-text{
+  margin-left: 8px;
+}
+
+video{
+  position: fixed;
+  top: -115px;
+  left: 0px;
+  margin: auto;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -10;
+  transition: all 0.3s ease-out;
+}
+
+</style>
+
+</html>
