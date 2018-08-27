@@ -12,11 +12,10 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
 </head>
-<body>
-  <video height="100%" autoplay muted loop id="video" src=""></video>  
-  <div class="container-fluid">
-    <div class="top-container">
-      <div class="text-container">
+<body id="body">
+  <div class="container">
+    <div class="d-flex flex-row align-items-end align-items-sm-center justify-content-center justify-content-sm-between flex-column flex-sm-row">
+      <div class="col-md-8" style="padding: 0">
         <h1 class="title">
             Julián Manrique
           </h1>
@@ -25,11 +24,11 @@
             Dev, gamer and language learner
           </p>
       </div>
-      <div class="buttons-container">
-        <a href="mailto:ja.manrique@uniandes.edu.co" target="_blank"><i class="fas fa-envelope-square"></i></a>
-        <a href="https://twitter.com/JaManrique0" target="_blank"> <i class="fab fa-twitter-square"></i></a>
+      <div class="buttons-container d-flex align-items-end">
         <a href="https://github.com/Sxubas" target="_blank"><i class="fab fa-github-square"></i></a>
+        <a href="https://twitter.com/JaManrique0" target="_blank"> <i class="fab fa-twitter-square"></i></a>
         <a href="https://steamcommunity.com/profiles/76561198093264665" target="_blank"><i class="fab fa-steam-square"></i></a>
+        <a href="mailto:ja.manrique@uniandes.edu.co" target="_blank"><i class="fas fa-envelope-square"></i></a>
       </div>
     </div>    
 
@@ -64,12 +63,21 @@
     </div>
 
   </div>
+
+
+  <video height="100%" style="opacity: 0" muted loop id="webdev-video" src="assets/video/webdev.mp4"></video>  
+  <video height="100%" style="opacity: 0" muted loop id="paladins-video" src="assets/video/paladins.mp4"></video>  
+  <video height="100%" style="opacity: 0" muted loop id="chinese-video" src="assets/video/chinese.mp4"></video>  
+  <video height="100%" style="opacity: 0" muted loop id="gh-video" src="assets/video/clonehero.mp4"></video>  
+
 </body>
 
 <script>
 
-var video = document.getElementById('video')
-video.style.opacity = 0
+var webdev_video = document.getElementById('webdev-video')
+var paladins_video = document.getElementById('paladins-video')
+var chinese_video = document.getElementById('chinese-video')
+var gh_video = document.getElementById('gh-video')
 
 var dev = document.getElementById('dev-label')
 var fps = document.getElementById('fps-label')
@@ -77,41 +85,64 @@ var chinese = document.getElementById('chinese-label')
 var hero = document.getElementById('guitar-hero-label')
 
 dev.addEventListener('mouseover', function(event) {
-  video.src="assets/video/webdev.mp4"
-  video.style.opacity = 1.0
+  webdev_video.currentTime = 0
+  webdev_video.play()
+  webdev_video.style.opacity = 1
 });
 
 dev.addEventListener('mouseleave', function(event){
-  video.style.opacity = 0
+  webdev_video.pause()
+  webdev_video.style.opacity = 0
 });
 
 
 fps.addEventListener('mouseover', function(event) {
-  video.src = "assets/video/paladins.mp4"
-  video.style.opacity = 1.0
+  paladins_video.currentTime = 0
+  paladins_video.play()
+  paladins_video.style.opacity = 1
 });
 
 fps.addEventListener('mouseleave', function(event){
-  video.style.opacity = 0
+  paladins_video.pause()
+  paladins_video.style.opacity = 0
 });
 
 chinese.addEventListener('mouseover', function(event) {
-  video.src = "---"
-  video.style.opacity = 1.0
+  chinese_video.currentTime = 0
+  chinese_video.play()
+  chinese_video.style.opacity = 1
 });
 
 chinese.addEventListener('mouseleave', function(event){
-  video.style.opacity = 0
+  chinese_video.pause()
+  chinese_video.style.opacity = 0
 });
 
 hero.addEventListener('mouseover', function(event) {
-  video.src = "assets/video/clonehero.mp4"
-  video.style.opacity = 1.0
+  gh_video.currentTime = 0
+  gh_video.play()
+  gh_video.style.opacity = 1
 });
 
 hero.addEventListener('mouseleave', function(event){
-  video.style.opacity = 0
+  gh_video.pause()
+  gh_video.style.opacity = 0 
 });
+
+updatePadding = function () {
+
+  if(window.innerHeight > window.innerWidth){
+    document.getElementById('body').style.padding = "5vh 10vw"
+  }
+  else{
+    document.getElementById('body').style.padding = "20vh 10vw"
+  }
+
+}
+
+updatePadding() //Llamar una vez al principio, siempre
+
+window.onresize = updatePadding
 
 </script>
 
@@ -126,15 +157,21 @@ html{
   user-select: none;
   height: 100%;
   width: 100%;
+  overflow: auto;
 }
 
 body{
   transition: all 0.6s ease-in-out;
   height: 100%;
-  widows: 100%;
+  width: 100%;
   padding: 20vh 10vw;
   background: linear-gradient(30deg, rgb(51, 51, 51), rgb(27, 27, 27)) no-repeat;
   color: whitesmoke;
+  overflow: auto;
+}
+
+body .container{
+  padding: 0;
 }
 
 .top-container{
@@ -145,12 +182,12 @@ body{
 }
 
 .buttons-container{
-  margin-right: 16px;
+  margin-right: -8px;
 }
 
 .buttons-container i{
   margin: 0px 8px;
-  font-size: 2.8rem;
+  font-size: 5vh;
   cursor: pointer;
 }
 
@@ -158,22 +195,23 @@ body{
   color: whitesmoke
 }
 
-.buttons-container a:hover{
-  color: rgb(182, 255, 231);
-}
 
 .buttons-container a:visited{
   color: rgb(150, 214, 193);
 }
 
+.buttons-container a:hover{
+  color: rgb(133, 192, 247);
+}
+
 .title{
-  font-size: 5rem;
+  font-size: 9.2vh;
   color: rgb(131, 255, 214);
-  margin: -8px 0px;
+  margin: -4px 0px;
 }
 
 .title-label{
-  font-size: 1.5rem;
+  font-size: 3.3vh;
   font-weight: lighter;
   margin: 0;
 }
@@ -185,28 +223,33 @@ hr{
 
 .list-title{
   margin: -4px 0;
+  font-size: 3.8vh;
 }
 
 .not-emphasized{
-  font-size: 1rem;
+  font-size: 1.9vh;
   color: rgb(180, 180, 180);
 }
 
 .list{
   display: flex;
   flex-direction: column;
-  padding: 0 1rem;
-  font-size: 1.4rem;
+  padding: 0 0rem;
+  font-size: 2.6vh;
 }
 
 .list-item{
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 1rem 0;
+  margin: 1.5vh 0;
   transition: all 0.3s linear;
   width: -moz-fit-content;
   padding: 2px;
+}
+
+.list-item i{
+  font-size: 4.2vh;
 }
 
 .list-item:hover{
@@ -223,7 +266,7 @@ video{
   left: 0px;
   margin: auto;
   min-width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
   z-index: -10;
   transition: all 0.3s ease-out;
 }
